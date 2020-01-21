@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Crud;
+use App\Http\Requests\StoreCrudPost;
 
 
 class CrudController extends Controller
@@ -35,39 +36,12 @@ class CrudController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCrudPost $request)
     {
-        $this->validate(request(), [
-            'name'   => 'required|min:8|max:50',
-            'date'   => 'required',
-            'gender' => 'required',
-            'email'  => 'required',
-            'phone'  => 'required'
-        ]);
-
-        $request    = request()->all();
-        
-        $cr         = new Crud();
-        $cr->name   = $request['name'];
-        $cr->date   = $request['date'];
-        $cr->gender = $request['gender'];
-        $cr->email  = $request['email'];
-        $cr->phone  = $request['phone'];
-
-        $cr->save();
+        $result = new Crud();
+        $result = Crud::create($request->all());
 
         return redirect('/');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -78,7 +52,7 @@ class CrudController extends Controller
      */
     public function edit($id)
     {
-        return view('layouts.edit')->with('cruds', Crud::find($id));    
+        return view('layouts.edit')->with('cruds', Crud::findOrFail($id));    
     }
 
     /**
@@ -88,26 +62,10 @@ class CrudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreCrudPost $request, $id)
     {
-        $this->validate(request(), [
-            'name'   => 'required|min:8|max:50',
-            'date'   => 'required',
-            'gender' => 'required',
-            'email'  => 'required',
-            'phone'  => 'required'
-        ]);
-
-        $request    = request()->all();
-
-        $cr         = Crud::find($id);
-        $cr->name   = $request['name'];
-        $cr->date   = $request['date'];
-        $cr->gender = $request['gender'];
-        $cr->email  = $request['email'];
-        $cr->phone  = $request['phone'];
-
-        $cr->save();
+        $result = Crud::findOrFail($id);
+        $result->update($request->all());
 
         return redirect('/');
     }
@@ -120,8 +78,8 @@ class CrudController extends Controller
      */
     public function destroy($id)
     {
-        $cr = Crud::find($id);
-        $cr -> delete();
+        $result = Crud::findOrFail($id);
+        $result->delete();
         return redirect('/');
     }
 }
