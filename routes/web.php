@@ -11,14 +11,14 @@
 |
 */
 
-Route::get('/', 'CrudController@index');
+Route::get('/', 'CrudController@index')->name('main.index');
 
-Route::get('/register', 'CrudController@create');
+Route::get('/register', 'CrudController@create')->name('main.create');
 
-Route::post('/store-crud', 'CrudController@store');
+Route::post('/store-crud', 'CrudController@store')->name('main.store');
 
-Route::get('/{id}/edit', 'CrudController@edit');
+Route::get('/edit/{id}', 'CrudController@edit')->name('main.edit');
 
-Route::post('/{id}/update-crud', 'CrudController@update');
+Route::put('/update-crud/{id}', 'CrudController@update')->name('main.update');
 
-Route::get('/{id}/delete', 'CrudController@destroy');
+Route::get('/delete/{id}', 'CrudController@destroy')->name('main.destroy');

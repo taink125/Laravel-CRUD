@@ -41,7 +41,7 @@ class CrudController extends Controller
         $result = new Crud();
         $result = Crud::create($request->all());
 
-        return redirect('/');
+        return redirect()->route('main.index');
     }
 
     /**
@@ -67,7 +67,7 @@ class CrudController extends Controller
         $result = Crud::findOrFail($id);
         $result->update($request->all());
 
-        return redirect('/');
+        return redirect()->route('main.index');
     }
 
     /**
@@ -80,6 +80,6 @@ class CrudController extends Controller
     {
         $result = Crud::findOrFail($id);
         $result->delete();
-        return redirect('/');
+        return redirect()->route('main.index');
     }
 }

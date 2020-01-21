@@ -21,13 +21,12 @@
                 <td class="text-center">{{ $crud->email }}</td>
                 <td class="text-center">{{ $crud->phone }}</td>
                 <td class="text-center">
-                    <a type="button" href="/{{ $crud->id }}/edit" class="btn btn-warning">
+                    <a type="button" href="{{ route('main.edit', $crud->id) }}" class="btn btn-warning">
                         <span class="far fa-edit mr-2"></span>Sửa
                     </a>
                     &nbsp;
-                    <a href="/{{ $crud->id }}/delete" type="button" class="btn btn-danger">
+                    <a href="{{ route('main.destroy', $crud->id) }}" type="button" class="btn btn-danger">
                         <span class="fas fa-trash mr-2"></span>Xóa
-                        @method('DELETE')
                     </a>
                 </td>
             </tr>

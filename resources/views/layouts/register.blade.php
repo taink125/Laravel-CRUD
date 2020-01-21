@@ -31,7 +31,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="/store-crud" method="post">
+                        <form action="{{ route('main.store') }}" method="post">
                             @csrf
                             <div class="form-group">
                                 <label>Họ tên :</label>
@@ -60,7 +60,7 @@
                             <br/>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-success">Thêm</button>&nbsp;
-                                <a href="/" class="btn btn-danger">Hủy Bỏ</a>
+                                <a href="{{ route('main.index') }}" class="btn btn-danger">Hủy Bỏ</a>
                             </div>
                         </form>
                     </div>
