@@ -24,10 +24,11 @@
                     <a type="button" href="{{ route('main.edit', $crud->id) }}" class="btn btn-warning">
                         <span class="far fa-edit mr-2"></span>Sửa
                     </a>
-                    &nbsp;
-                    <a href="{{ route('main.destroy', $crud->id) }}" type="button" class="btn btn-danger">
-                        <span class="fas fa-trash mr-2"></span>Xóa
-                    </a>
+                    <form action="{{ route('main.destroy', $crud->id) }}" method="POST" accept-charset="utf-">
+                        @method('DELETE')
+                        @csrf
+                        <button type="submit" class="btn btn-danger"><span class="fas fa-trash mr-2"></span>Xóa</button>
+                    </form>
                 </td>
             </tr>
             @endforeach

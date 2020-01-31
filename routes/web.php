@@ -10,15 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'CrudController@index')->name('main.index');
 
-Route::get('/register', 'CrudController@create')->name('main.create');
+Route::group(['prefix' => 'main'], function() {
+	Route::get('/register', 'CrudController@create')->name('main.create');
+	Route::post('/store-crud', 'CrudController@store')->name('main.store');
+	Route::get('/edit/{id}', 'CrudController@edit')->name('main.edit');
+	Route::put('/update-crud/{id}', 'CrudController@update')->name('main.update');
+	Route::delete('/{id}', 'CrudController@destroy')->name('main.destroy');
+});
 
-Route::post('/store-crud', 'CrudController@store')->name('main.store');
-
-Route::get('/edit/{id}', 'CrudController@edit')->name('main.edit');
-
-Route::put('/update-crud/{id}', 'CrudController@update')->name('main.update');
-
-Route::get('/delete/{id}', 'CrudController@destroy')->name('main.destroy');

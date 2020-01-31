@@ -21,16 +21,8 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="row mt-15 mb-3">
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 d-flex">
-                        {{-- <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Nhập từ khóa..." />
-                            <span class="input-group-append">
-                                <button class="btn btn-primary bg-primary mr-3" type="button">
-                                    <span class="fa fa-search"></span>
-                                </button>
-                            </span>
-                        </div> --}}
                         <div class="w-50">
-                            <a href="/register" class="btn btn-primary bg-primary">Thêm thành viên</a>
+                            <a href="{{ route('main.create') }}" class="btn btn-primary bg-primary">Thêm thành viên</a>
                         </div>
                     </div>
                 </div>
